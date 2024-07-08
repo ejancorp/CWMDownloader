@@ -8,7 +8,7 @@ export default async function VerifyAccess(options) {
   const browser = await CreateBrowser();
   const page = await CreatePage(browser, options)
 
-  await page.goto(Settings.urls.home, { waitUntil: 'networkidle2' });
+  await page.goto(Settings.urls.base, { waitUntil: 'networkidle2' });
 
   const courses = await page.$$eval('.course-listing', (listings) => {
     return listings.length;

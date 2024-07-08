@@ -9,7 +9,9 @@ export default async function CreateBrowser() {
     headless: Settings.pupeteer.headless,
     args: [
       `--user-agent=${Settings.pupeteer.user_agent}`
-    ]
+    ],
+    defaultViewport: null,
+    slowMo: 24
   });
 
   return browser;

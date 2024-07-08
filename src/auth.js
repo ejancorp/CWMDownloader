@@ -16,6 +16,7 @@ export default async function auth(options) {
 
   const homePageSpinner = ora(chalk.yellow(`Connecting to ${Settings.urls.home}...`)).start();
   const courses = await VerifyAccess({ method, headers, body });
+
   if (courses === 0) {
     homePageSpinner.fail(chalk.green(`Unable to connect to ${Settings.urls.home}`));
     process.exit(0);
@@ -25,16 +26,20 @@ export default async function auth(options) {
 
   const profileSpinner = ora(chalk.yellow(`Verifying user profile...`)).start();
   const { name, email } = await VerifyUser({ method, headers, body });
+
   profileSpinner.succeed(chalk.green(`Verified user profile`));
+
   console.log(chalk.blue(`Name: ${name}`));
   console.log(chalk.blue(`Email: ${email}`));
 
   const subscriptionSpinner = ora(chalk.yellow(`Verifying user subscription...`)).start();
   const { name: planName, price, daysRemaining } = await VerifySubscription({ method, headers, body });
+
   if (daysRemaining === 0) {
     subscriptionSpinner.fail(chalk.green(`Subcsription is expired, please renew your subscription to be able to download a course.`));
     process.exit(0);
   }
+
   console.log(chalk.blue(`Plan Name: ${planName}`));
   console.log(chalk.blue(`Price: ${price}`));
   console.log(chalk.blue(`Remaining Days: ${daysRemaining}`));

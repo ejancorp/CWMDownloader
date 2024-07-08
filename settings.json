@@ -2,7 +2,8 @@
   "urls": {
     "home": "https://members.codewithmosh.com/",
     "profile": "https://members.codewithmosh.com/current_user/profile",
-    "subscription": "https://members.codewithmosh.com/current_user/subscriptions"
+    "subscription": "https://members.codewithmosh.com/current_user/subscriptions",
+    "courses": "https://members.codewithmosh.com/courses/enrolled/240431"
   },
   "pupeteer": {
     "headless": true,

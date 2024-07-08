@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 import auth from '../src/auth.js';
+import download from '../src/download.js';
 
 const program = new Command();
 
@@ -12,9 +13,14 @@ program
 
 program.command('auth')
   .description('Authenticate to CodeWithMosh using your cookie.')
-  // .requiredOption('-c, --cookie <cookie>', 'Your CodeWithMosh Cookie')
   .requiredOption('-f --file <file>', 'Path of the file to be used to authenticate.')
   .action((options) => auth(options));
+
+program.command('download')
+  .description('Download videos from CodeWithMosh using your cookie.')
+  .requiredOption('-f --file <file>', 'Path of the file to be used to authenticate.')
+  .action((options) => download(options));
+
 
 program.parse();
 

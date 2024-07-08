@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import Settings from '../helpers/Settings.js';
 
 export default async function CreateBrowser() {
+
   await Settings.read();
 
   const browser = await puppeteer.launch({
